@@ -1,21 +1,33 @@
+<div class="d-flex justify-content-center">
+  <form action="/sort" method="GET">
+    <label for="order">篩選順序</label>
+    <select name="sort" id='inputType' style="width: 200px;" onchange="this.form.submit()">
+      <option value="" disabled selected>--請選擇篩選項目--</option>
+      <option value="家居物業-asc" {{#if (eq sort '家居物業-asc' ) }} selected {{/if}}>家居物業</option>
+      <option value="交通出行-asc" {{#if (eq sort '交通出行-asc' )}} selected {{/if}}>交通出行</option>
+      <option value="休閒娛樂-asc" {{#if (eq sort '休閒娛樂-asc' ) }} selected {{/if}}>休閒娛樂</option>
+      <option value="餐飲食品-asc" {{#if (eq sort '餐飲食品-asc' ) }} selected {{/if}}>餐飲食品</option>
+      <option value="其他-asc" {{#if (eq sort '其他-asc' ) }} selected {{/if}}>其他</option>
+    </select>
+  </form>
+</div>
+
 <ul class="list-group">
-  {{#each todos}}
-  <li class="list-group-item">
-    <div class="row">
-      <div class="col-auto mr-auto">
-        <input style="vertical-align: middle;" type="checkbox" name="isDone" {{#if this.isDone }} checked {{/if}}
-          disabled>
-        <h4 style="display: inline; vertical-align: middle;">
-          {{ this.name }}
-        </h4>
-      </div>
-      <div class="col-auto">
-        <a class="btn btn-secondary" href="./todos/{{ this._id }}">detail</a>
-        <a class="btn btn-success" href="./todos/{{ this._id }}/edit">edit</a>
-        <form action="./todos/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
-          <button class="btn btn-danger" type="submit">delete</button>
-        </form>
-      </div>
+  {{#each records}}
+  <li class=" row p-0 d-flex justify-content-md-bewteen list-group-item">
+    <div class="col-1 col-md-1 py-1"><i class="{{this.categoryIcom}} fa-2x"></i></div>
+    <div class="ms-2 me-5 col-4 col-md-6">
+      <div class="fw-bold">{{this.name}}</div>
+      <p class="mb-0" style="font-size: xx-small;">{{this.date}}</p>
+    </div>
+    <p class="col-2 col-md-2 p-0 m-0" style="font-size: 24px;">{{this.amount}}</h5>
+    <div class="col-5 col-md-3 d-flex align-items-center justify-content-center">
+      <form action="/records/{{this._id}}/edit" method="GET" style="display: inline;">
+        <button type=" submit" class="btn btn-info mx-2">修改</button>
+      </form>
+      <form action="/records/{{this._id}}?_method=delete" method="POST" style="display: inline;">
+        <button type="submit" class="btn btn-danger">刪除</button>
+      </form>
     </div>
   </li>
   {{/each}}
