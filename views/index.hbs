@@ -12,10 +12,15 @@
   </form>
 </div>
 
-<ul class="list-group">
+<div class="d-flex justify-content-center mt-2">
+  <h3 class="d-flex align-items-end mx-2">總金額:</h3>
+  <h1>{{totalAmount.amount}}</h1>
+</div>
+
+<ul class="list-group list-group-flush m-auto" style="max-width: 840px;">
   {{#each records}}
-  <li class=" row p-0 d-flex justify-content-md-bewteen list-group-item">
-    <div class="col-1 col-md-1 py-1"><i class="{{this.categoryIcom}} fa-2x"></i></div>
+  <li class=" row p-0 d-flex justify-content-md-between list-group-item">
+    <div class="col-1 col-md-1 py-1"><i class="{{this.categoryIcon}} fa-2x"></i></div>
     <div class="ms-2 me-5 col-4 col-md-6">
       <div class="fw-bold">{{this.name}}</div>
       <p class="mb-0" style="font-size: xx-small;">{{this.date}}</p>

@@ -3,38 +3,32 @@
     {
       "name": "早餐",
       "category": "餐飲食品",
-      "amount": "100",
-      "categoryIcon":""
+      "amount": "100"
     },
     {
       "name": "可不可熟成紅茶",
       "category": "餐飲食品",
-      "amount": "35",
-      "categoryIcon":""
+      "amount": "35"
     },
     {
       "name": "哥吉拉大戰金剛",
       "category": "休閒娛樂",
-      "amount": "250",
-      "categoryIcon":""
+      "amount": "250"
     },
     {
       "name": "公車",
       "category": "交通出行",
-      "amount": "100",
-      "categoryIcon":""
+      "amount": "100"
     },
     {
       "name": "管理費",
       "category": "家居物業",
-      "amount": "1000",
-      "categoryIcon":""
+      "amount": "1000"
     },
     {
       "name": "很純的按摩",
       "category": "其他",
-      "amount": "1000",
-      "categoryIcon":""
+      "amount": "1000"
     }
   ]
 }

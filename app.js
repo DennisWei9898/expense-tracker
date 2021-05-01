@@ -1,9 +1,14 @@
 // 載入相關套件
 const express = require('express')
 const exphbs = require('express-handlebars')
-const app = express()
+
 const port = 3000
 const Record = require('./models/record')
+const bodyParser = require('body-parser')
+
+const routes = require('./routes')
+require('./config/mongoose')
+const app = express()
 
 app.engine('hbs', exphbs(
   {
@@ -16,12 +21,8 @@ app.engine('hbs', exphbs(
 ))
 app.set('view engine', 'hbs')
 
-app.get('/', (req, res) => {
-  Record.find()
-    .lean()
-    .then(records => res.render('index', { records }))
-    .catch(error => console.log(error))
-})
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(routes)
 
 app.listen(port, () => {
   console.log(`This server is listening on http://localhost:${port}`)
