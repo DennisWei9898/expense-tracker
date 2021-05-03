@@ -1,36 +1,32 @@
-<div class="container">
-  <form action="/records" method="POST">
-    <h3>請輸入你的支出</h3>
-    <div class="row mb-3 mt-5">
-      <label for="inputEmail3" class="col-sm-2 col-form-label">日期</label>
-      <div class="col-sm-10">
-        <input type="date" placeholder="2021/5/1" name="date" id="date" value="{{ record.date }}" required>
+<div class="container mt-5">
+  <div class="record">
+    <form action="/records/new" method="POST">
+      <h3> 請輸入你的支出</h3>
+      <div class="row-sm">
+        <label class="form-label" for="name">名稱：</label>
+        <input type="text" name="name" required>
       </div>
-    </div>
-    <div class="row mb-3 mt-5">
-      <label for="inputEmail3" class="col-sm-2 col-form-label">消費名稱</label>
-      <div class="col-sm-10">
-        <input type="text" placeholder="Diner早午餐" name="name" id="name" value="{{ record.name}}" required>
+      <div class="row-sm">
+        <label class="form-label" for="date">日期：</label>
+        <input type="date" id="date" name="date" required>
       </div>
-    </div>
-    <div class="row mb-3 mt-5">
-      <label for="inputEmail3" class="col-sm-2 col-form-label">類別</label>
-      <select id="Category" name="Category">
-        <option value="家居物業">家居物業</option>
-        <option value="交通出行">交通出行</option>
-        <option value="休閒娛樂">休閒娛樂</option>
-        <option value="餐飲食品">餐飲食品</option>
-        <option value="其他">其他</option>
-      </select>
-    </div>
-    <div class="row mb-3 mt-5">
-      <label for="inputEmail3" class="col-sm-2 col-form-label">消費金額</label>
-      <div class="col-sm-10">
-        <input type="number" placeholder="300" name="amount" id="amount" value="{{ record.amount }}" required>
+      <div class="row-sm">
+        <label class="form-label" for="category">類別：</label>
+        <input list="categorys" name="category" id="category" required>
+        <datalist id="categorys">
+          <option>家居物業</option>
+          <option>交通出行</option>
+          <option>休閒娛樂</option>
+          <option>餐飲食品</option>
+          <option>其他</option>
+        </datalist>
       </div>
-    </div>
-    <div class="input-group-append">
-      <button class="btn btn-success" type="submit">Create</button>
-    </div>
-  </form>
+      <div class="row-sm">
+        <label class="form-label" for="amount">金額：</label>
+        <input type="text" name="amount" required>
+      </div>
+      <button type="submit"> 送出 </button>
+    </form>
+  </div>
+
 </div>

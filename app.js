@@ -1,14 +1,14 @@
 // 載入相關套件
 const express = require('express')
 const exphbs = require('express-handlebars')
+const methodOverride = require('method-override')
+const bodyParser = require('body-parser')
+const app = express()
 
 const port = 3000
-const Record = require('./models/record')
-const bodyParser = require('body-parser')
 
 const routes = require('./routes')
 require('./config/mongoose')
-const app = express()
 
 app.engine('hbs', exphbs(
   {
@@ -22,6 +22,7 @@ app.engine('hbs', exphbs(
 app.set('view engine', 'hbs')
 
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(methodOverride('_method'))
 app.use(routes)
 
 app.listen(port, () => {
