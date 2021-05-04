@@ -7,6 +7,14 @@ router.get('/new', (req, res) => {
   return res.render('new')
 })
 
+router.get('/:id', (req, res) => {
+  const id = req.params.id
+  return Record.findById(id)
+    .lean()
+    .then((record) => res.render('edit', { record}))
+    .catch(error => console.log(error))
+})
+
 router.post('/new', (req, res) => {
   const { name, date, category, amount } = req.body
   let iconArray = categoryList.filter((item, index, array) => { return item.category === category })
