@@ -7,14 +7,6 @@ router.get('/new', (req, res) => {
   return res.render('new')
 })
 
-router.get('/:id', (req, res) => {
-  const id = req.params.id
-  return Record.findById(id)
-    .lean()
-    .then((record) => res.render('edit', { record}))
-    .catch(error => console.log(error))
-})
-
 router.post('/new', (req, res) => {
   const { name, date, category, amount } = req.body
   let iconArray = categoryList.filter((item, index, array) => { return item.category === category })
@@ -31,11 +23,21 @@ router.post('/new', (req, res) => {
     .then(console.log(categoryIcon))
     .catch(error => console.log(error))
 })
+
+router.get('/:id', (req, res) => {
+  const id = req.params.id
+  return Record.findById(id)
+    .lean()
+    .then((record) => res.render('edit', { record }))
+    .catch(error => console.log(error))
+}
+)
+
 router.get('/:id/edit', (req, res) => {
   const id = req.params.id
   return Record.findById(id)
     .lean()
-    .then(record => res.render('edit', record))
+    .then((record) => res.render('edit', {record}))
     .catch(error => console.log(error))
 })
 
@@ -46,13 +48,6 @@ router.put('/:id', (req, res) => {
   let categoryIcon = iconArray[0].categoryIcon
   return Record.findById(id)
     .then(record => {
-      // record = Object.assign(record, {
-      //   name: name,
-      //   date: date, 
-      //   category: category,
-      //   amount: amount,
-      //   categoryIcon: categoryIcon
-      // })
       record.name = name
       record.date = date
       record.category = category
@@ -71,6 +66,5 @@ router.delete('/:id', (req, res) => {
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
-
 
 module.exports = router

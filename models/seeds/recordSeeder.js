@@ -11,7 +11,7 @@ db.once('open', () => {
         Record.create({
           name: recordList[i].name,
           category: recordList[i].category,
-          date: Date.now(),
+          date: recordList[i].date,
           amount: recordList[i].amount,
           categoryIcon: categoryList[j].categoryIcon
         })
