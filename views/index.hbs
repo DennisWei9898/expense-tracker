@@ -1,20 +1,21 @@
 <div class="d-flex justify-content-center">
-  <form action="/sort" method="GET">
+  <form action="/filter" method="GET">
     <label for="order">篩選順序</label>
-    <select name="sort" id='inputType' style="width: 200px;" onchange="this.form.submit()">
+    <select name="filter" id='inputType' style="width: 200px;" onchange="this.form.submit()">
       <option value="" disabled selected>--請選擇篩選項目--</option>
-      <option value="家居物業-asc" {{#if (eq sort '家居物業-asc' ) }} selected {{/if}}>家居物業</option>
-      <option value="交通出行-asc" {{#if (eq sort '交通出行-asc' )}} selected {{/if}}>交通出行</option>
-      <option value="休閒娛樂-asc" {{#if (eq sort '休閒娛樂-asc' ) }} selected {{/if}}>休閒娛樂</option>
-      <option value="餐飲食品-asc" {{#if (eq sort '餐飲食品-asc' ) }} selected {{/if}}>餐飲食品</option>
-      <option value="其他-asc" {{#if (eq sort '其他-asc' ) }} selected {{/if}}>其他</option>
+      {{#if filter}}<option selected>{{filter}}</option>{{/if}}
+      <option value="家居物業">家居物業</option>
+      <option value="交通出行">交通出行</option>
+      <option value="休閒娛樂">休閒娛樂</option>
+      <option value="餐飲食品">餐飲食品</option>
+      <option value="其他">其他</option>
     </select>
   </form>
 </div>
 
 <div class="d-flex justify-content-center mt-2">
   <h3 class="d-flex align-items-end mx-2">總金額:</h3>
-  <h1>{{totalAmount.amount}}</h1>
+  <h1>{{totalAmount}}</h1>
 </div>
 
 <ul class="list-group list-group-flush m-auto" style="max-width: 840px;">
