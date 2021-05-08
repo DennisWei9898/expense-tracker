@@ -5,7 +5,12 @@ const Record = require('../../models/record')
 router.get('/', (req, res) => {
   Record.find()
     .lean()
-    .then(records => res.render('index', { records }))
+    .then((records, totalAmount) => {
+      totalAmount = records.reduce((prev, curr) => prev + curr.amount, 0)
+      console.log(records)
+      console.log('totalAmount:', totalAmount)
+      res.render('index', { records, totalAmount })
+    })
     .catch(error => console.log(error))
 })
 
