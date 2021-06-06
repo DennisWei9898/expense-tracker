@@ -15,7 +15,6 @@ module.exports = app => {
         if (user.password !== password) {
           return done(null, false, { message: 'Email or password Incorrect' })
         }
-        console.log('send message')
         return done(null, user)
       })
       .catch(err => done(err, false))
