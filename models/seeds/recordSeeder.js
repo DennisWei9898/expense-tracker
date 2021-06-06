@@ -13,7 +13,8 @@ db.once('open', () => {
           category: recordList[i].category,
           date: recordList[i].date,
           amount: recordList[i].amount,
-          categoryIcon: categoryList[j].categoryIcon
+          categoryIcon: categoryList[j].categoryIcon,
+          merchant: recordList[i].merchant
         })
       }
     }

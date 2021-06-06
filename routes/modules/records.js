@@ -8,7 +8,7 @@ router.get('/new', (req, res) => {
 })
 
 router.post('/new', (req, res) => {
-  const { name, date, category, amount } = req.body
+  const { name, date, category, amount, merchant } = req.body
   const iconArray = categoryList.filter((item, index, array) => { return item.category === category })
   const categoryIcon = iconArray[0].categoryIcon
   return Record.create({
@@ -16,7 +16,8 @@ router.post('/new', (req, res) => {
     date: date,
     category: category,
     amount: amount,
-    categoryIcon: categoryIcon
+    categoryIcon: categoryIcon,
+    merchant: merchant
   }
   )
     .then(res.redirect('/'))
@@ -43,7 +44,7 @@ router.get('/:id/edit', (req, res) => {
 
 router.put('/:id', (req, res) => {
   const id = req.params.id
-  const { name, date, category, amount } = req.body
+  const { name, date, category, amount, merchant } = req.body
   const iconArray = categoryList.filter((item, index, array) => { return item.category === category })
   const categoryIcon = iconArray[0].categoryIcon
   return Record.findById(id)
@@ -53,6 +54,7 @@ router.put('/:id', (req, res) => {
       record.category = category
       record.amount = amount
       record.categoryIcon = categoryIcon
+      record.merchant = merchant
       return record.save()
     })
     .then(() => res.redirect('/'))
