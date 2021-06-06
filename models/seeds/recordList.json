@@ -5,42 +5,48 @@
       "category": "餐飲食品",
       "amount": "100",
       "date":"2021-05-06",
-      "merchant": "麥味登"
+      "merchant": "麥味登",
+      "categoryIcon": "fas fa-home"
     },
     {
       "name": "可不可熟成紅茶",
       "category": "餐飲食品",
       "amount": "35",
       "date":"2021-05-06",
-      "merchant":"可不可"
+      "merchant":"可不可",
+      "categoryIcon": "fas fa-home"
     },
     {
       "name": "哥吉拉大戰金剛",
       "category": "休閒娛樂",
       "amount": "250",
       "date":"2021-05-06",
-      "merchant":"威秀影城"
+      "merchant":"威秀影城",
+      "categoryIcon": "fas fa-grin-beam"
     },
     {
       "name": "公車",
       "category": "交通出行",
       "amount": "100",
       "date":"2021-05-06",
-      "merchant":"台灣好行"
+      "merchant":"台灣好行",
+      "categoryIcon": "fas fa-shuttle-van"
     },
     {
       "name": "管理費",
       "category": "家居物業",
       "amount": "1000",
       "date":"2021-05-06",
-      "merchant":"里長杯杯"
+      "merchant":"里長杯杯",
+      "categoryIcon": "fas fa-home"
     },
     {
       "name": "很純的按摩",
       "category": "其他",
       "amount": "1000",
       "date":"2021-05-06",
-      "merchant":"養足"
+      "merchant":"養足",
+      "categoryIcon": "fas fa-pen"
     }
   ]
 }

@@ -9,6 +9,7 @@ router.get('/new', (req, res) => {
 
 router.post('/new', (req, res) => {
   const { name, date, category, amount, merchant } = req.body
+  const userId = req.user._id
   const iconArray = categoryList.filter((item, index, array) => { return item.category === category })
   const categoryIcon = iconArray[0].categoryIcon
   return Record.create({
@@ -17,7 +18,8 @@ router.post('/new', (req, res) => {
     category: category,
     amount: amount,
     categoryIcon: categoryIcon,
-    merchant: merchant
+    merchant: merchant,
+    userId: userId
   }
   )
     .then(res.redirect('/'))

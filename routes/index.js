@@ -12,7 +12,7 @@ const { authenticator } = require('../middleware/auth')
 router.use('/records', authenticator, records)
 router.use('/users', users)
 router.use('/auth', auth)
-router.use('/filter', authenticator, filter)
+router.use('/filter', filter)
 router.use('/', authenticator, home)
 
 module.exports = router
