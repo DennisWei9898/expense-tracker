@@ -25,7 +25,7 @@ app.engine('hbs', exphbs(
 app.set('view engine', 'hbs')
 
 app.use(session({
-  secret: 'ThisIsMyScret',
+  secret: 'ThisIsMySecret',
   resave: false,
   saveUninitialized: true
 }))
