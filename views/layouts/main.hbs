@@ -20,8 +20,8 @@
   <header>
     <nav class="navbar navbar-dark bg-primary justify-content-between">
       <a class="navbar-brand" href="/">
-      {{#if isAuthenticated}} {{user.name}}'s {{/if}}
-      私房錢
+      {{#if isAuthenticated}} {{user.name}}'s
+      {{else}}你專屬的{{/if}}私房錢
       </a>
       {{#if isAuthenticated}}
       <div class="justify-content-end">
