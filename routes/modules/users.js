@@ -10,7 +10,8 @@ router.get('/login', (req, res) => {
 
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/',
-  failureRedirect: '/users/login'
+  failureRedirect: '/users/login',
+  failureFlash: true
 }))
 
 router.get('/register', (req, res) => {
@@ -19,6 +20,7 @@ router.get('/register', (req, res) => {
 
 router.post('/register', (req, res) => {
   const { name, email, password, confirmPassword } = req.body
+  const registerSuccess = `${name}會員註冊成功！`
   const errors = []
   if (!name || !email || !password || !confirmPassword) {
     errors.push({ message: '所有欄位都是必填的' })
@@ -54,13 +56,14 @@ router.post('/register', (req, res) => {
         email,
         password: hash
       }))
-      .then(() => res.redirect('/'))
+      .then(() => res.render('login', { name, registerSuccess }))
       .catch(err => console.log(err))
   })
 })
 
 router.get('/logout', (req, res) => {
   req.logout()
+  req.flash('success_msg', '你己經成功登出')
   res.redirect('/users/login')
 })
 

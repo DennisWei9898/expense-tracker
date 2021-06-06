@@ -1,24 +1,36 @@
+const bcrypt = require('bcryptjs')
+
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
 const Record = require('../record')
 const db = require('../../config/mongoose')
 const recordList = require('./recordList.json').record
-const categoryList = require('./categoryList.json').category
+const user = require('../user')
+
+const SEED_USER = {
+  name: 'root',
+  email: 'root@example.com',
+  password: '12345678'
+}
 
 db.once('open', () => {
   console.log('mongodb connected')
-  for (let i = 0; i < recordList.length; i++) {
-    for (let j = 0; j < categoryList.length; j++) {
-      if (recordList[i].category === categoryList[j].category) {
-        Record.create({
-          name: recordList[i].name,
-          category: recordList[i].category,
-          date: recordList[i].date,
-          amount: recordList[i].amount,
-          categoryIcon: categoryList[j].categoryIcon,
-          merchant: recordList[i].merchant
-        })
-      }
-    }
-  }
-
-  console.log('done')
+  bcrypt
+    .genSalt(10)
+    .then(salt => bcrypt.hash(SEED_USER.password, salt))
+    .then(hash => user.create({
+      name: SEED_USER.name,
+      email: SEED_USER.email,
+      password: hash
+    }))
+    .then(user => {
+      const userId = user._id
+      return Promise.all(recordList.map(record => Record.create(Object.assign(record, { userId }))))
+    })
+    .then(() => {
+      console.log('done')
+      process.exit()
+    })
 })

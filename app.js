@@ -1,17 +1,22 @@
 // 載入相關套件
 const express = require('express')
 const session = require('express-session')
+const usePassport = require('./config/passport')
+const app = express()
 const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 const bodyParser = require('body-parser')
 const flash = require('connect-flash')
 
-const PORT = process.env.PORT || 3000
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
+const PORT = process.env.PORT
 
 const routes = require('./routes')
-const usePassport = require('./config/passport')
+
 require('./config/mongoose')
-const app = express()
 
 app.engine('hbs', exphbs(
   {

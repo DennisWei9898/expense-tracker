@@ -9,11 +9,12 @@ const categoryList = require('./categoryList.json').category
 // })
 
 db.once('open', () => {
-  for (let i = 0; i < categoryList.length; i++) {
-    Category.create({
-      category: categoryList[i].category,
-      categoryIcon: categoryList[i].categoryIcon
+  Category.create(categoryList)
+    .then(() => {
+      console.log('CategoryIcon created successfully!')
+      return db.close()
     })
-  }
-  console.log('Category done!')
+    .then(() => {
+      console.log('done')
+    })
 })
